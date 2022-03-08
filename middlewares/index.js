@@ -5,6 +5,8 @@ const tokenValidation = require('./tokenValidation');
 const nameValidation = require('./nameValidation');
 const ageValidation = require('./ageValidation');
 const talkValidation = require('./talkValidation');
+const dateValidation = require('./dateValidation');
+const rateValidation = require('./rateValidation');
 
 
 module.exports = {
@@ -15,4 +17,6 @@ module.exports = {
   nameValidation,
   ageValidation,
   talkValidation,
+  dateValidation,
+  rateValidation
 }

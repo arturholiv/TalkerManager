@@ -16,6 +16,8 @@ const createTalkerValidationMiddlewares = [
   middlewares.nameValidation,
   middlewares.ageValidation,
   middlewares.talkValidation,
+  middlewares.dateValidation,
+  middlewares.rateValidation,
 ]
 
 const HTTP_OK_STATUS = 200;
