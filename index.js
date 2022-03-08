@@ -11,6 +11,7 @@ const PORT = '3000';
 // CREATE
 // READ
 app.get('/talker', controllers.getTalkers);
+app.get('/talker/:id', controllers.getTalkerById);
 // UPDATE
 // DELETE
 
