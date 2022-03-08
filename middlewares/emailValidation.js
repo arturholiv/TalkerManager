@@ -1,5 +1,4 @@
 const validator = require('email-validator');
-const req = require('express/lib/request');
 
 module.exports = (req, res, next) => {
   try {
@@ -12,4 +11,4 @@ module.exports = (req, res, next) => {
   } catch (error) {
     return next(e);
   }
-}
+};
