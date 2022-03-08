@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+const middlewares = require('./middlewares');
 const controllers = require('./controllers')
 
 const HTTP_OK_STATUS = 200;
