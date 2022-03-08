@@ -12,11 +12,11 @@ module.exports = async (req, res, next) => {
 
     parsedTalkers.push(newTalker);
 
-    const stringfiedTalkers = JSON.stringify(parsedTalkers);
+    const stringfiedTalkers = JSON.stringify(parsedTalkers, null, 2);
 
     await writeFile('./talker.json', stringfiedTalkers);
 
-    return res.status(201).json({newTalker});
+    return res.status(201).json(newTalker);
   } catch (error) {
     return next(error);
   }
