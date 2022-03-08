@@ -6,5 +6,5 @@ module.exports = (req, res, next) => {
      return next();  
   } catch (error) {
     return next(e);
-  }
+  };
 };
