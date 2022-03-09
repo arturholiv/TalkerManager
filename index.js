@@ -35,6 +35,7 @@ app.post('/talker',
 app.get('/talker', controllers.getTalkers);
 app.get('/talker/:id', controllers.getTalkerById);
 
+app.use(middlewares.errorHandler);
 // UPDATE
 // DELETE
 
@@ -42,7 +43,6 @@ app.get('/', (_request, response) => {
   response.status(HTTP_OK_STATUS).send();
 });
 
-app.use(middlewares.errorHandler);
 
 app.listen(PORT, () => {
   console.log('Online: port 3000');
