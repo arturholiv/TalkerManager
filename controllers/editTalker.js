@@ -2,20 +2,26 @@ const { readFile, writeFile } = require('fs/promises');
 
 module.exports = async (req, res, next) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
+    const numId = +id;
+
+    const { name, age, talk } = req.body;
 
     const talkers = await readFile('./talker.json', 'utf-8');
     const parsedTalkers = JSON.parse(talkers);
     
-    const newTalker = { name, age, talk };
+    const talkerIndex = parsedTalkers.findIndex((t) => t.id === id);
 
-    parsedTalkers.push(newTalker);
+    const updatedTalker = { name, age, id: numId ,talk };
 
-    const stringfiedTalkers = JSON.stringify(parsedTalkers, null, 2); // null, 2 identation for the json
+    parsedTalkers.splice(talkerIndex, 1, updatedTalker); 
+    // parsedTalkers[talkerIndex] = updatedTalker; ^^^^ // these two do the same thing  
+
+    const stringfiedTalkers = JSON.stringify(parsedTalkers, null, 2);
 
     await writeFile('./talker.json', stringfiedTalkers);
 
-    return res.status(201).json(newTalker);
+    return res.status(201).json(updatedTalker);
   } catch (error) {
     return next(error);
   }

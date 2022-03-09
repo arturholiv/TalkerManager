@@ -36,7 +36,10 @@ app.get('/talker', controllers.getTalkers);
 app.get('/talker/:id', controllers.getTalkerById);
 
 app.use(middlewares.errorHandler);
+
 // UPDATE
+app.put('/talker/:id', controllers.createTalker);
+
 // DELETE
 
 app.get('/', (_request, response) => {

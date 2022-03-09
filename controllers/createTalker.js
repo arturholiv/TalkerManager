@@ -5,10 +5,13 @@ module.exports = async (req, res, next) => {
   try {
     const { name, age, talk } = req.body;
 
+    const { id } = req.params;
+    const numId = +id;
+
     const talkers = await readFile('./talker.json', 'utf-8');
     const parsedTalkers = JSON.parse(talkers);
     
-    const newTalker = { id: uuid(), name, age, talk };
+    const newTalker = { id: numId, name, age, talk };
 
     parsedTalkers.push(newTalker);
 
