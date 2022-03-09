@@ -34,7 +34,9 @@ app.post('/talker',
 // READ
 app.get('/talker', controllers.getTalkers);
 app.get('/talker/:id', controllers.getTalkerById);
-app.get('/talker/search', controllers.searchTalker);
+app.get('/talker/search',
+  middlewares.tokenValidation,
+  controllers.searchTalker);
 
 app.use(middlewares.errorHandler);
 
@@ -54,5 +56,5 @@ app.get('/', (_request, response) => {
 
 
 app.listen(PORT, () => {
-  console.log('Online: port 3000');
+  console.log(`Online: port ${PORT}`);
 });
