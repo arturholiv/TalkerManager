@@ -11,7 +11,7 @@ const loginValidationMiddlewares = [
   middlewares.passwordValidation,
 ];
 
-const createTalkerValidationMiddlewares = [
+const talkerValidationMiddlewares = [
   middlewares.tokenValidation,
   middlewares.nameValidation,
   middlewares.ageValidation,
@@ -28,7 +28,7 @@ app.post('/login',
   loginValidationMiddlewares,
   controllers.login);
 app.post('/talker',
-  createTalkerValidationMiddlewares,
+  loginValidationMiddlewares,
   controllers.createTalker);
 
 // READ
@@ -38,9 +38,14 @@ app.get('/talker/:id', controllers.getTalkerById);
 app.use(middlewares.errorHandler);
 
 // UPDATE
-app.put('/talker/:id', controllers.createTalker);
+app.put('/talker/:id',
+  talkerValidationMiddlewares,  
+  controllers.createTalker);
 
 // DELETE
+app.delete('/talker/:id',
+middlewares.tokenValidation,
+controllers.deleteTalker);
 
 app.get('/', (_request, response) => {
   response.status(HTTP_OK_STATUS).send();
