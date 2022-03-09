@@ -2,7 +2,7 @@ const { readFile } = require('fs/promises')
 
 module.exports = async (req, res, next) => {
   try {
-    const { name } = req.query;
+    const { name = '' } = req.query;
 
     const talkers = await readFile('./talker.json', 'utf-8');
     const parsedTalkers = JSON.parse(talkers)
