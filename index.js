@@ -34,6 +34,7 @@ app.post('/talker',
 // READ
 app.get('/talker', controllers.getTalkers);
 app.get('/talker/:id', controllers.getTalkerById);
+app.get('/talker/search', controllers.searchTalker);
 
 app.use(middlewares.errorHandler);
 
