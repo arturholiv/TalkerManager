@@ -31,12 +31,12 @@ app.post('/talker',
   loginValidationMiddlewares,
   controllers.createTalker);
 
-// READ
+  // READ
+  app.get('/talker/search',
+    middlewares.tokenValidation,
+    controllers.searchTalker);
 app.get('/talker', controllers.getTalkers);
 app.get('/talker/:id', controllers.getTalkerById);
-app.get('/talker/search',
-  middlewares.tokenValidation,
-  controllers.searchTalker);
 
 app.use(middlewares.errorHandler);
 
